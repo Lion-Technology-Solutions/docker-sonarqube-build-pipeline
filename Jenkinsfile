@@ -38,6 +38,14 @@ pipeline {
         stage("list images") {
             steps{
                 sh "docker images"
+                sh ""
+            }
+        }
+
+        stage("deleteallimages"){
+            steps{
+
+                sh "docker rm -f $(docker ps -aq)"
             }
         }
         stage('notify teams channel'){
